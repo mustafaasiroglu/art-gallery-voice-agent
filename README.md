@@ -2,7 +2,9 @@
 
 An AI-powered voice and chat assistant for art gallery exhibitions. Visitors can ask questions about artworks, artists, and the exhibition — by typing or speaking — and receive rich responses including artwork images and detailed descriptions.
 
-## 🌐 Live Preview
+> **This is a generic, reusable template.** The included exhibition content (artworks, artist bios, system prompt) is sample data that can be replaced with any gallery's collection.
+
+## 🌐 Live Demo
 
 **[https://artagent.azurewebsites.net/](https://artagent.azurewebsites.net/)**
 
@@ -14,7 +16,7 @@ An AI-powered voice and chat assistant for art gallery exhibitions. Visitors can
 
 ### Overview
 
-The application is a Flask web app that serves as an interactive guide for the **"Bir Arada"** exhibition at Yapı Kredi Culture and Arts, featuring artworks by **Fulya Çetin** and **İlhan Sayın**. Visitors can interact with the agent via:
+The application is a Flask web app that acts as an intelligent, voice-enabled guide for any art gallery or museum exhibition. Visitors can interact with the agent via:
 
 - **Text chat** — type questions directly in the browser
 - **Voice input** — speak using the microphone button (powered by Azure Speech Services)
@@ -34,7 +36,7 @@ Flask Web App (app.py)
     │       │
     │       └─ Tool Calls (function calling)
     │               ├─ artwork_information  → artworks.py (local artwork database)
-    │               ├─ get_current_datetime → returns Istanbul time
+    │               ├─ get_current_datetime → returns current time
     │               ├─ get_current_weather  → AccuWeather API
     │               └─ search_for_news      → news search
     │
@@ -127,12 +129,18 @@ az webapp up --name <your-app-name> --resource-group <your-rg> --runtime PYTHON:
 
 ---
 
-## Exhibition: "Bir Arada"
+## Sample Exhibition Data
 
-The agent is configured as a guide for the **"Bir Arada"** (Together) exhibition series at Yapı Kredi Culture and Arts, Istanbul. The second edition of the series brings together two Istanbul-based artists of the same generation who have been creating since the 1990s:
+The repository ships with sample exhibition content to demonstrate how the agent works out of the box. It includes a few example artworks, artist bios, and a system prompt — all defined in `artworks.py` and `agents.py`.
 
-- **Fulya Çetin** — *Gündüz Rüyaları (Daydreams)*: Oil paintings exploring ecofeminist themes, nature, and identity.
-- **İlhan Sayın** — *Geyikli Gece (Night with Deer)*: Works focused on nature's resistance, the passage of time, and urban transformation.
+To adapt the agent to your own gallery:
+
+1. **Replace `artworks.py`** — add your own artworks with IDs, titles, artists, descriptions, and image URLs.
+2. **Update the system prompt in `agents.py`** — describe your exhibition, venue, and any special instructions for the agent.
+3. **Swap artwork images** in `static/images/artworks/`.
+4. **Adjust sample prompts and the initial greeting** in `agents.py` to match your exhibition's context.
+
+No other code changes are needed.
 
 ---
 
